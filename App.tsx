@@ -1,56 +1,94 @@
+import React from "react";
 import {
-  ViroARScene,
   ViroARSceneNavigator,
-  ViroText,
-  ViroTrackingReason,
-  ViroTrackingStateConstants,
+  ViroARTrackingTargets,
+  ViroAnimations,
+  ViroMaterials,
 } from "@reactvision/react-viro";
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import Level01 from "./levels/Level01";
 
-const HelloWorldSceneAR = () => {
-  const [text, setText] = useState("Initializing AR...");
-
-  function onInitialized(state: any, reason: ViroTrackingReason) {
-    console.log("onInitialized", state, reason);
-    if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText("Hello World!");
-    } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
-      // Handle loss of tracking
-    }
-  }
-
-  return (
-    <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
-        text={text}
-        scale={[0.5, 0.5, 0.5]}
-        position={[0, 0, -1]}
-        style={styles.helloWorldTextStyle}
-      />
-    </ViroARScene>
-  );
-};
-
-export default () => {
-  return (
-    <ViroARSceneNavigator
-      autofocus={true}
-      initialScene={{
-        scene: HelloWorldSceneAR,
-      }}
-      style={styles.f1}
-    />
-  );
-};
-
-var styles = StyleSheet.create({
-  f1: { flex: 1 },
-  helloWorldTextStyle: {
-    fontFamily: "Arial",
-    fontSize: 30,
-    color: "#ffffff",
-    textAlignVertical: "center",
-    textAlign: "center",
+ViroARTrackingTargets.createTargets({
+  level01: {
+    source: require("./imgs/levels/highbg.png"),
+    orientation: "Up",
+    physicalWidth: 0.375, // 37.5cm
+    type: "Image",
+  },
+  level01_next: {
+    source: require("./imgs/levels/level02.png"),
+    orientation: "Up",
+    physicalWidth: 0.375,
+    type: "Image",
+  },
+  level02: {
+    source: require("./imgs/levels/level02.png"),
+    orientation: "Up",
+    physicalWidth: 0.375, // 37.5cm
+    type: "Image",
+  },
+  level02_next: {
+    source: require("./imgs/levels/level03.png"),
+    orientation: "Up",
+    physicalWidth: 0.375,
+    type: "Image",
+  },
+  level03: {
+    source: require("./imgs/levels/level03.png"),
+    orientation: "Up",
+    physicalWidth: 0.375, // 37.5cm
+    type: "Image",
+  },
+  level03_next: {
+    source: require("./imgs/levels/level04.png"),
+    orientation: "Up",
+    physicalWidth: 0.375,
+    type: "Image",
+  },
+  getKey: {
+    source: require("./imgs/levels/keyCollected.png"),
+    orientation: "Up",
+    physicalWidth: 0.375,
+    type: "Image",
+  },
+  resetAll: {
+    source: require("./imgs/death.png"),
+    orientation: "Up",
+    physicalWidth: 0.375,
+    type: "Image",
   },
 });
+
+ViroMaterials.createMaterials({
+  stone: {
+    diffuseTexture: require("./imgs/tiles/stone.jpg"),
+    wrapS: "Repeat", // horizontal
+    wrapT: "Repeat", // vertical
+  },
+});
+
+ViroAnimations.registerAnimations({
+  // animateGetKey not in use currently
+  animateGetKey: {
+    properties: {
+      opacity: 0,
+      translateY: 0.2,
+      translateZ: 0.1,
+    },
+    easing: "Bounce",
+    duration: 5000,
+  },
+  animateIdleKey: {
+    properties: {
+      rotateZ: "+=45",
+    },
+    duration: 1000,
+  },
+});
+
+const App = () => {
+  return (
+    <ViroARSceneNavigator initialScene={{ scene: Level01 }} autofocus={true} />
+  );
+};
+
+export default App;
