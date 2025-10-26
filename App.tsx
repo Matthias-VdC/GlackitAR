@@ -11,39 +11,39 @@ const monitorWidth = 0.375; // 37.5cm
 
 ViroARTrackingTargets.createTargets({
   level01: {
-    source: require("./imgs/levels/highbg.png"),
+    source: require("./imgs/levels/level01.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
   level02: {
     source: require("./imgs/levels/level02.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
   level03: {
     source: require("./imgs/levels/level03.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
   level04: {
     source: require("./imgs/levels/level04.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
   getKey: {
     source: require("./imgs/levels/keyCollected.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
   resetAll: {
     source: require("./imgs/death.png"),
     orientation: "Up",
-    physicalWidth: "monitorWidth",
+    physicalWidth: monitorWidth,
     type: "Image",
   },
 });
