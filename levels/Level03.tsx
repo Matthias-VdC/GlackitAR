@@ -5,14 +5,9 @@ import {
   ViroARImageMarker,
   ViroNode,
   ViroQuad,
-  ViroARTrackingTargets,
 } from "@reactvision/react-viro";
 import ThreeByOneBox from "../gameObjects/ThreeByOneBox";
 import Key from "../gameObjects/Key";
-
-ViroARTrackingTargets.createTargets({
-
-});
 
 //@ts-ignore:next-line
 const Level03 = ({ sceneNavigator }) => {
@@ -21,9 +16,9 @@ const Level03 = ({ sceneNavigator }) => {
   const [keyActive, setKeyActive] = useState(true);
 
   // const handleNextLevel = useCallback(() => {
-  //   sceneNavigator.replace({
-  //     scene: Level02,
-  //   });
+  //   setTimeout(() => {
+  //     sceneNavigator.replace({ scene: Level04 });
+  //   }, 100);
   // }, [sceneNavigator]);
 
   const handleGameAnchorFound = useCallback(() => {
@@ -47,7 +42,7 @@ const Level03 = ({ sceneNavigator }) => {
       <ViroAmbientLight color="#ffffff" intensity={200} />
 
       <ViroARImageMarker
-        target="game"
+        target="level03"
         onAnchorFound={handleGameAnchorFound}
         pauseUpdates={pauseGameUpdates}
       >
@@ -69,11 +64,11 @@ const Level03 = ({ sceneNavigator }) => {
         pauseUpdates={false}
       />
 
-      <ViroARImageMarker
-        target="nextLevel"
-        // onAnchorFound={handleNextLevel}
+      {/* <ViroARImageMarker
+        target="level04"
+        onAnchorFound={handleNextLevel}
         pauseUpdates={false}
-      />
+      /> */}
 
       <ViroQuad
         rotation={[-90, 0, 0]}

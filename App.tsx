@@ -7,53 +7,43 @@ import {
 } from "@reactvision/react-viro";
 import Level01 from "./levels/Level01";
 
+const monitorWidth = 0.375; // 37.5cm
+
 ViroARTrackingTargets.createTargets({
   level01: {
     source: require("./imgs/levels/highbg.png"),
     orientation: "Up",
-    physicalWidth: 0.375, // 37.5cm
-    type: "Image",
-  },
-  level01_next: {
-    source: require("./imgs/levels/level02.png"),
-    orientation: "Up",
-    physicalWidth: 0.375,
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
   level02: {
     source: require("./imgs/levels/level02.png"),
     orientation: "Up",
-    physicalWidth: 0.375, // 37.5cm
-    type: "Image",
-  },
-  level02_next: {
-    source: require("./imgs/levels/level03.png"),
-    orientation: "Up",
-    physicalWidth: 0.375,
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
   level03: {
     source: require("./imgs/levels/level03.png"),
     orientation: "Up",
-    physicalWidth: 0.375, // 37.5cm
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
-  level03_next: {
+  level04: {
     source: require("./imgs/levels/level04.png"),
     orientation: "Up",
-    physicalWidth: 0.375,
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
   getKey: {
     source: require("./imgs/levels/keyCollected.png"),
     orientation: "Up",
-    physicalWidth: 0.375,
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
   resetAll: {
     source: require("./imgs/death.png"),
     orientation: "Up",
-    physicalWidth: 0.375,
+    physicalWidth: "monitorWidth",
     type: "Image",
   },
 });

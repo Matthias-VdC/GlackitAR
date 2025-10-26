@@ -17,9 +17,9 @@ const Level01 = ({ sceneNavigator }) => {
   const [keyActive, setKeyActive] = useState(true);
 
   const handleNextLevel = useCallback(() => {
-    sceneNavigator.replace({
-      scene: Level02,
-    });
+    setTimeout(() => {
+      sceneNavigator.replace({ scene: Level02 });
+    }, 100);
   }, [sceneNavigator]);
 
   const handleGameAnchorFound = useCallback(() => {
@@ -66,7 +66,7 @@ const Level01 = ({ sceneNavigator }) => {
       />
 
       <ViroARImageMarker
-        target="level01_next"
+        target="level02"
         onAnchorFound={handleNextLevel}
         pauseUpdates={false}
       />
