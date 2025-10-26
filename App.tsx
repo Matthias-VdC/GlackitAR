@@ -34,18 +34,6 @@ ViroARTrackingTargets.createTargets({
     physicalWidth: monitorWidth,
     type: "Image",
   },
-  getKey: {
-    source: require("./imgs/levels/keyCollected.png"),
-    orientation: "Up",
-    physicalWidth: monitorWidth,
-    type: "Image",
-  },
-  resetAll: {
-    source: require("./imgs/death.png"),
-    orientation: "Up",
-    physicalWidth: monitorWidth,
-    type: "Image",
-  },
 });
 
 ViroMaterials.createMaterials({
